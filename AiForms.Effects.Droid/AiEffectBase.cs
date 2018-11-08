@@ -10,6 +10,8 @@ namespace AiForms.Effects.Droid
     {
         public static bool IsFastRenderers = global::Xamarin.Forms.Forms.Flags.Any(x => x == "FastRenderers_Experimental");
 
+        protected bool IsSupportedByApi => Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.Lollipop;
+
         IVisualElementRenderer _renderer;
         bool _isDisposed = false;
         protected bool IsDisposed {

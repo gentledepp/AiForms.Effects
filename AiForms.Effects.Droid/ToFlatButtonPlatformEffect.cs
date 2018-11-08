@@ -26,6 +26,9 @@ namespace AiForms.Effects.Droid
 
         protected override void OnAttached()
         {
+            if (!IsSupportedByApi)
+                return;
+
             NativeButton = Control as AppCompatButton;
             if (NativeButton == null)
                 return;
@@ -51,6 +54,8 @@ namespace AiForms.Effects.Droid
 
         protected override void OnDetached()
         {
+            if (!IsSupportedByApi)
+                return;
             if (!IsDisposed) {
                 NativeButton.Background = OrgBackground;
                 NativeButton.StateListAnimator = OrgStateListAnimator;
@@ -75,6 +80,9 @@ namespace AiForms.Effects.Droid
         protected override void OnElementPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(e);
+
+            if (!IsSupportedByApi)
+                return;
 
             if (IsDisposed) {
                 return;
